@@ -1,11 +1,9 @@
 
 ## h2spec
 
-A specification for the `h()` call signature, and consistent implementations for them
+A specification for the `h()` call signature, and consistent implementations of it for different views
 
-There is compatibility problem among many popular modules like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc. and to-string versions of those libraries
-
-So this introduces a new version of `h()` functions called "h2" or "hyper2". It makes it consistent no matter what view you are working with: browser dom, vdom, server rendering, terminal, canvas, etc.
+There is compatibility problem among different UI libraries like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc.  So this introduces a new version of `h()` functions called "h2" or "hyper2". It makes it consistent no matter what view you are working with: browser dom, vdom, server rendering, terminal, canvas, etc.
 
 ### `h(tag, data?, children?) -> node`
 
