@@ -3,15 +3,16 @@
 
 ### `h(tag, data?, children?) -> node`
 
-1. `tag` must be type of `string` and can **NOT** carry extra data, like classes or ids (e.g. `div.foo` or `div#bar`)
-2. If the the 2nd parameter is true and the 3rd parameter is `undefined` the 2nd parameter becomes `data` or `children` respectively
-3. `data` must be an object (excluding arrays) if `node` type is not an object, otherwise `null` must be used
-4. `children` can only be _empty_, a _primitive value_, the type of `node`, or an array containing any of the mentioned types
+1. `tag` must be a string and can not contain extra data like classes or ids (e.g. `div.foo` or `div#bar`)
+2. If the 3rd parameter is not defined
+    1. And the 2nd parameter passes step 3, then the 2nd becomes `data`
+    2. And the 2nd parameter passes step 4, then the 2nd becomes `children`
+3. `data` must only be a default javascript object unless `node` is also an object, otherwise it must be `null`
+4. `children` must only be a `node`, _primitive value_, or an array of either
 
-- _empty_ is a "no value node" type returned by `h`.  e.g. an empty node object, empty array, or empty string
-- _primitive value_ is `undefined`, `null`, Boolean, Number, or String (defined [by ECMAScript](https://www.ecma-international.org/ecma-262/5.1/#sec-4.3.2))
+- _primitive value_ is Boolean, Number, String, `null`, or `undefined` (specified [by ECMAScript](https://www.ecma-international.org/ecma-262/5.1/#sec-4.3.2))
 
-Some conditions are critical such as the parameter's precedence, but others are simple assertions that can be "reasonably ignored" to create smaller implementation sizes. For example, checking primitive types and array contents every time can be costly, so they can be assumed. But, an implementation should never support something outside of what the spec allows.
+Some conditions are criticali, such as the parameter's precedence, but others are simple assertions that can be "reasonably ignored" to create smaller implementation sizes. For example, checking primitive types and array contents every time can be costly, so they can be assumed. But, an implementation should never support something outside of what the spec allows.
 
 ## Projects
 
