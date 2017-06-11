@@ -35,6 +35,23 @@ The `h(tag, data?, children?)` function is what ties the production of a DOM nod
 
 While some of these return types do mix well, like VDOMs + strings = SSR, most do not. Handling several content types in each creates needless complexity. This is exactly why `h(...)` should be very well defined in itself, so it is easy to swap out whole trees, because the libraries rely on the same `h` function usage
 
+### VDOM objects and the `data` parameter
+
+If we take a code scenario like this one:
+
+```js
+h('div', h('span', 'hello world'))
+```
+
+If `h()` returns a default javascript object we have to make some compromises to distinguish it from the `data` parameter the call sequence could expect.  We must specify `null` or use an array:
+
+```js
+h('div', null, h('span', 'hello world'))
+h('div', [h('span', 'hello world')])
+```
+
+This could be seen as a downside, but on the upside it create a stable behavior no matter what `h()` returns
+
 ### How would a VDOM or JSON abstraction of this look?
 
 Since the elements are only tied together through `tag`, `data`, and `children`, you could just plop those into objects or arrays:
