@@ -11,8 +11,8 @@ There is compatibility problem among different UI libraries like [`hyperapp`](ht
 
 1. `tag` must be a string and can not contain extra data like classes or ids (e.g. `div.foo` or `div#bar`)
 2. If the 2nd parameter is defined but the 3rd parameter is not
-    1. And the 2nd passes step 3, then it becomes `data`
-    2. And the 2nd passes step 4, then it becomes `children`
+    1. And the 2nd passes step 4, then it becomes `children`
+    2. And the 2nd passes step 3, then it becomes `data`
 3. `data` must be a default javascript object, unless `node` is too.  Otherwise it can only be `null` or `undefined`
 4. `children` must be a `node`, _primitive value_, or an array of either
 
