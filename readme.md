@@ -3,7 +3,7 @@
 
 A specification for the `h()` call signature and consistent implementations for different views.
 
-There is compatibility problem among many UI libraries like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc. So this introduces a new version of `h()` functions called "h2" or "hyper2".
+There is compatibility problem among many UI libraries like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc. So this introduces a consistent version of `h()` functions called "h2" or "hyper2".
 These projects make the usage consistent no matter what view you're working with: browser dom, vdom, server rendering, terminal, canvas, etc.
 
 ## Call sequence
@@ -29,12 +29,13 @@ These projects make the usage consistent no matter what view you're working with
 ### Should the return types of `h`-libraries (DOM, VDOMs, strings, etc) cross into each other?
 
 This spec isolates `h` functions' children to their own return type for a reason.
-Do not mix return types outside of something experimental. However, feel free to change your entire project tree between DOM, VDOM, and strings, since how the elements are created is compatible.
+Do not mix return types outside of something experimental.
+However, you can change your entire project tree to DOM, VDOM, and strings, because the elements created are compatible.
 
 Elements are symbolized through combining `{ tag, data, children }`.
-The `h(tag, data?, children?)` function is what ties the production of a DOM node, VDOM object, string, or anything, together with nice usage under that simple combination.
+The `h(tag, data?, children?)` function is what ties the production of a DOM node, VDOM object, string, or anything, together with consistent usage under that simple combination.
 
-While some of these return types do mix well, like VDOMs + strings = SSR, most do not. Handling several content types in each creates needless complexity. This is exactly why `h(...)` should be very well defined in itself, so it is easy to swap out whole trees, because the libraries rely on the same `h` function usage.
+While some of these return types do mix well (i.e. VDOMs + strings = SSR) most do not. Handling several content types in each creates needless complexity. This is exactly why `h(...)` should be very well defined in itself, so it is easy to swap out whole trees, because the libraries rely on the same `h` function usage.
 
 ### VDOM objects and the `data` parameter
 
@@ -51,7 +52,7 @@ h('div', null, h('span', 'hello world'))
 h('div', [h('span', 'hello world')])
 ```
 
-This could be seen as a downside, but on the upside it create a stable behavior no matter what `h()` returns.
+This could be seen as a downside, but on the upside it's a consistent behavior no matter what `h()` returns.
 
 ### How would a VDOM or JSON abstraction of this look?
 
