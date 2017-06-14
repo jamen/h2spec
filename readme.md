@@ -1,12 +1,16 @@
 
 # h2spec
 
-A specification for the `h()` call signature and consistent implementations for different views.
+## Abstract
 
-There is compatibility problem among many UI libraries like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc. So this introduces a consistent version of `h()` functions called "h2" or "hyper2".
+A specification for proper `h()` calls.
+
+There is some compatibility problems among many UI libraries like [`hyperapp`](https://github.com/hyperapp), [`hyperscript`](https://github.com/hyperhype/hyperscript), [`choo`](https://github.com/yoshuawuyts/choo), [`snabbdom`](https://github.com/snabbdom/snabbdom), etc. So this introduces a consistent version of `h()` functions called "h2" or "hyper2".
 These projects make the usage consistent no matter what view you're working with: browser dom, vdom, server rendering, terminal, canvas, etc.
 
-## Call sequence
+Once the spec is more mature, several of these libraries will be forked and aligned with the spec. Patches will be sent upstream where it can be merged/rejected by the authors.  But, there will also be several "official" implementations before this as a proof-of-concept.  Ones that get rejected may be maintained on their own.
+
+## Specification
 
 ### `h(tag, data?, children?) -> node`
 
@@ -21,9 +25,11 @@ These projects make the usage consistent no matter what view you're working with
 
 ## Projects
 
- - [`h2ml`](https://github.com/hyper2/h2ml) creates an HTML string
- - [`h2json`](https://github.com/hyper2/h2json) creates a compact tree of arrays for JSON
-
+ - [`h2spec`](https://github.com/hyper2/h2spec) (this)
+ - [`h2dom`](https://github.com/hyper2/h2dom) creates DOM nodes
+ - [`h2ml`](https://github.com/hyper2/h2ml) creates HTML strings
+ - [`h2json`](https://github.com/hyper2/h2json) creates array trees resembling `h()` calls
+ 
 ## FAQ
 
 ### Should the return types of `h`-libraries (DOM, VDOMs, strings, etc) cross into each other?
